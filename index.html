@@ -2,7 +2,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
          <meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>想要说的一些话</title>	    
+		<title>我想对你说</title>	    
         <link type="text/css" rel="stylesheet" href="./renxi/default.css">
 		<script type="text/javascript" src="./renxi/jquery.min.js"></script>
 		<script type="text/javascript" src="./renxi/jscex.min.js"></script>
@@ -34,7 +34,7 @@
             <div class="img img09"></div>
         </div>
     </div>
-        <embed id="embed" src="renxi.mp3" width="300" height="200" autostart="true" hidden="true"style="display: none;"></embed>
+    <audio src="renxi.mp3" id="Jaudio" class="media-audio" autoplay preload loop="loop"></audio>    
         <div id="main">
             <div id="error">本页面采用HTML5编辑，目前您的浏览器无法显示，请换成谷歌(<a href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&brand=CHMI">Chrome</a>)或者火狐(<a href="http://firefox.com.cn/download/">Firefox</a>)浏览器，或者其他游览器的最新版本。</div>
              <div id="wrap">
@@ -72,7 +72,30 @@
     </script>
 
     <script "text/javascript">
+
     (function(){
+
+        function audioAutoPlay(id){  
+    var audio = document.getElementById(id),  
+        play = function(){  
+            audio.play();  
+            document.removeEventListener("touchstart",play, false);  
+        };  
+    audio.play();  
+    document.addEventListener("WeixinJSBridgeReady", function () {  
+        play();  
+    }, false);  
+    document.addEventListener('YixinJSBridgeReady', function() {  
+        play();  
+    }, false);  
+    document.addEventListener("touchstart",play, false);  
+}  
+audioAutoPlay('Jaudio');  
+
+
+
+
+
         $(document).click(function(){
         $("#embed").css("display","block");
         })
